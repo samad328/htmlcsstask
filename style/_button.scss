@@ -1,0 +1,95 @@
+@font-face {
+    font-family: "Roboto Condensed";
+    src: url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+  }
+  
+  $RobotoCondensed: "Roboto Condensed", sans-serif;
+  $black: #000000;
+  $white: #ffffff;
+  $blue: #050506;
+  
+ 
+  .buttons {
+    &--wrapper {
+      padding: 25px 0;
+      margin-top: 1rem;
+    }
+    &--title {
+      color: $black;
+      font-size: 50px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    &--list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin: 25px 0;
+      button {
+        flex: 0 0 17.5%;
+        margin: 10px;
+      }
+    }
+  }
+  
+  .custom-btn {
+    appearance: none;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    max-height: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out 0.1s;
+    z-index: 1;
+    background: black;
+    color: wheat;
+    border-radius: 20px;
+    span {
+      z-index: 2;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      background: $blue;
+      z-index: -1;
+    }
+  
+ 
+   
+    &.style-04,
+    &.style-04:focus,
+    &.style-04:active,
+    &.style-04:visited {
+      border: 2px solid $blue;
+      background-color: transparent;
+      color: $blue;
+      &:before {
+        width: 100%;
+        height: 0;
+        top: 0;
+        left: 0;
+        transition: height 0.5s ease-in-out;
+      }
+      &:hover {
+        cursor: pointer;
+        color: $white;
+        &:before {
+          height: 100%;
+          top: auto;
+          bottom: 0;
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,256 @@
+
+// // @font-face {
+// //     font-family: 'Dennis Sans';
+// //     src: url('../fonts/NeueMontreal-Light.otf') format('opentype');
+// //     font-weight: 300;
+// //     font-style: normal;
+// //     font-display: auto;
+// // }
+
+// // @font-face {
+// //     font-family: 'Dennis Sans';
+// //     src: url('../fonts/NeueMontreal-LightItalic.otf') format('opentype');
+// //     font-weight: 300;
+// //     font-style: italic;
+// //     font-display: auto;
+// // }
+
+// // @font-face {
+// //     font-family: 'Dennis Sans';
+// //     src: url('../fonts/NeueMontreal-Regular.otf') format('opentype');
+// //     font-weight: 450;
+// //     font-style: normal;
+// //     font-display: auto;
+// // }
+
+// // @font-face {
+// //     font-family: 'Dennis Sans';
+// //     src: url('../fonts/NeueMontreal-Italic.otf') format('opentype');
+// //     font-weight: 450;
+// //     font-style: italic;
+// //     font-display: auto;
+// // }
+
+// // @font-face {
+// //     font-family: 'Dennis Sans';
+// //     src: url('../fonts/NeueMontreal-Bold.otf') format('opentype');
+// //     font-weight: 800;
+// //     font-style: normal;
+// //     font-display: auto;
+// // }
+
+// // @font-face {
+// //     font-family: 'Dennis Sans';
+// //     src: url('../fonts/NeueMontreal-BoldItalic.otf') format('opentype');
+// //     font-weight: 800;
+// //     font-style: italic;
+// //     font-display: auto;
+// // }
+
+
+
+// /* ------------------------- Colors -------------------------------------------------- */
+
+// :root {
+
+//     --color-dark: #1C1D20;
+//     --color-dark-dark: #141517;
+//     --color-light: #FFFFFF;
+//     --color-blue: #455CE9;
+//     --color-blue-dark: #334BD3;
+//     --color-gray: #999D9E;
+//     --color-lightgray: #E9EAEB;
+//     --color-white: #FFFFFF;
+    
+//     --color-border: rgba(28, 29, 32, 0.175);
+//     --color-border-solid: #D2D2D2;
+//     --color-border-light: rgba(255, 255, 255, 0.2);
+//     --color-border-solid-light: #545557;
+
+//     --color-text: #1C1D20;
+//     --color-text-light: #FFF;
+
+//     --alert-error: #ff4444;
+//     --alert-success: #24C958;
+
+//     --animation-primary: all .5s cubic-bezier(.7, 0, .3, 1);
+//     --animation-fast: all .3s cubic-bezier(.7, 0, .3, 1);
+//     --animation-smooth: all .7s cubic-bezier(.7, 0, .3, 1);
+//     --animation-slow: all .9s cubic-bezier(.7, 0, .3, 1);
+
+//     --section-padding: clamp(5em, 21vh, 12em);
+//     --container-padding: clamp(2.5em, 8vw, 8em);
+//     --gap-padding: clamp(1.5em, 4vw, 2.5em);
+  
+// }
+
+// @media screen and (max-width: 1200px){
+//     :root { 
+//         --container-padding: 6vw;
+//     }
+// }
+
+// @media screen and (max-width: 720px){
+//     :root { 
+//         --section-padding: 12vh;
+//     }
+// }
+
+// @media screen and (max-width: 540px){
+
+//     :root { 
+//         --color-border: rgba(28, 29, 32, 0.225);
+//         --color-border-light: rgba(255, 255, 255, 0.225);
+//         --container-padding: clamp(1.25em, 4vw, 2.5em);
+//         --section-padding: max(2.5em, 12vh);
+//     }
+// }
+
+
+// /* ------------------------- Body -------------------------------------------------- */
+
+// *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+// li, ul {padding: 0; margin: 0; list-style: none;}
+
+// body {
+//     // -webkit-font-smoothing: antialiased;
+//     // font-family: 'Dennis Sans', sans-serif;
+//     // color: var(--color-text);
+//     // line-height: 1.6;
+//     // font-weight: 450;
+//     // font-style: normal;
+//     // font-size: 16px;
+//     // font-size: clamp(16px, 1.2vw, 19px);
+//     // background-color: var(--color-dark);
+// }
+
+// html, body {
+//     width: 100%;
+//     -webkit-font-smoothing: antialiased;
+//     position: relative;
+//     background-color: var(--color-dark);
+// }
+
+// /* Selection */
+// ::selection {background-color: var(--color-blue); color: var(--color-white); text-shadow: none;}
+// ::-moz-selection {background-color: var(--color-blue); color: var(--color-white); text-shadow: none;}
+
+// canvas, img, video {
+//     max-width: 100%;
+//     height: auto;
+//     box-sizing: border-box;
+// }
+
+// svg {
+//     max-width: none;
+//     height: auto;
+//     box-sizing: border-box;
+// }
+
+// audio, canvas, iframe, img, svg, video {
+//     vertical-align: middle;
+// }
+
+// /* ------------------------- Typography -------------------------------------------------- */
+
+// h1, h2, h3, h4, h5, h6, p, a, li, ul, ol, span, strong, em  {padding: 0; margin: 0; font-style: normal; font-weight: 450; letter-spacing: normal;}
+// h1:last-child, h2:last-child, h3:last-child, h4:last-child, p:last-child, p.big:last-child, p.small:last-child, a:last-child, strong:last-child  {margin-bottom: 0;}
+
+:root {
+    --step--2: clamp(0.625rem, 0.8356rem + -0.2717vw, 0.7813rem);
+    --step--1: clamp(0.8838rem, 0.9562rem + -0.0935vw, 0.9375rem);
+    --step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+    --step-1: clamp(1.35rem, 1.2048rem + 0.7261vw, 1.7675rem);
+    --step-2: clamp(1.62rem, 1.3141rem + 1.5293vw, 2.4994rem);
+    --step-3: clamp(1.9438rem, 1.3907rem + 2.7652vw, 3.5338rem);
+    --step-4: clamp(2.3325rem, 1.4058rem + 4.6337vw, 4.9969rem);
+    --step-5: clamp(2rem, 1.3155rem + 5.4196vw, 5.0656rem);
+  }
+
+
+
+h1 {
+    font-weight: 800;
+    font-style: normal;
+    // font-size: clamp(3.25em, 7vw, 8em);
+    line-height: 1.065;
+    // margin-bottom: 1em;
+    font-family: 'Anton', sans-serif;
+
+font-size: var(--step-5);
+}
+  
+h2 {
+    font-weight: 800;
+    font-style: normal;
+    // font-size: clamp(3.25em, 7vw, 8em);
+    line-height: 1.065;
+    // margin-bottom: 1em;
+    font-family: 'Anton', sans-serif;
+
+font-size: var(--step-4);
+}
+  
+h3 {
+    font-family: 'Dennis Sans', sans-serif;
+    font-weight: 450;
+    font-style: normal;
+    font-size: clamp(2.66em, 4.65vw, 5.32em);
+    line-height: 1.065;
+    margin-bottom: 1em;
+}
+  
+h4 {
+    font-family: 'Dennis Sans', sans-serif;
+    font-weight: 450;
+    font-style: normal;
+    font-size: clamp(1.55em, 2.3vw, 2.5em);
+    line-height: 1.45;
+    margin-bottom: 1em;
+}
+
+h5 {
+    font-family: 'Dennis Sans', sans-serif;
+    font-weight: 450;
+    font-style: normal;
+    font-size: .6em;
+    line-height: 1.065;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    opacity: .5;
+}
+
+
+p {
+    font-weight: 450;
+    font-style: normal;
+    
+    font-size: var(--step-0);
+    // line-height: 1.66;
+    margin: 2em 0;
+    color: rgb(85, 84, 84);
+}
+
+p.small {
+    font-size: .8em;
+    line-height: 1.75;
+    letter-spacing: .015em;
+}
+
+p.big {
+    font-size: 1.2em;
+}
+
+strong {
+    font-weight: 800;
+}
+  
+a {
+    color: var(--color-blue);
+    text-decoration: none;
+}
+
+p a {
+    text-decoration: underline;
+}
