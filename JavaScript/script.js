@@ -59,8 +59,9 @@ a.forEach(item => {
   });
 })
    }
+   cursor()
 
-cursor()
+
     function scroll(){
         
         const fx18Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect18]')];
@@ -202,7 +203,7 @@ cursor()
         
         });
         }
-        draggable()
+    draggable()
 
 function imageReveal(){
 
