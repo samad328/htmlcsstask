@@ -196,9 +196,8 @@ a.forEach(item => {
     function draggable(){
         gsap.registerPlugin(Draggable);
         Draggable.create(".ball", {type:"x,y",
-        edgeResistance:0.65,
         bounds: document.querySelector('.hero-Section'),
-        throwProps:true,
+        
         
         
         });
