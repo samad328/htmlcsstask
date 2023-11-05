@@ -1,8 +1,52 @@
 
 Splitting();
 gsap.registerPlugin(ScrollTrigger);
+circleRotate()
 
-(function() {
+function preloader(){
+  const tl = gsap.timeline();
+
+  tl.to("body", {
+    overflow: "hidden"
+  })
+    .to(".preloader .text-container", {
+      duration: 0,
+      opacity: 1,
+      ease: "Power3.easeOut"
+    })
+    .from(".preloader .text-container h5", {
+      duration: 1.5,
+      delay: 1,
+      y: 100,
+      skewY: 10,
+      stagger: 0.4,
+      ease: "Power3.easeOut"
+    })
+    .to(".preloader .text-container h5", {
+      duration: 1.2,
+      y: 100,
+      skewY: -20,
+      stagger: 0.2,
+      ease: "Power3.easeOut"
+    })
+    .to(".preloader", {
+      duration: 1.5,
+      height: "0vh",
+      ease: "Power3.easeOut"
+    })
+    .to(
+      "body",
+      {
+        overflow: "auto"
+      },
+      "-=2"
+    )
+    .to(".preloader", {
+      display: "none"
+    });
+  
+}
+preloader()
 
    
     function Navbar(){
@@ -19,6 +63,32 @@ gsap.registerPlugin(ScrollTrigger);
            });
     }
     Navbar()
+
+
+    function navBar(){
+      var lastScrollTop; // This Varibale will store the top position
+
+      navbar = document.getElementById('navbar'); // Get The NavBar
+      
+      window.addEventListener('scroll',function(){
+       //on every scroll this funtion will be called
+        
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        //This line will get the location on scroll
+        
+        if(scrollTop > lastScrollTop){ //if it will be greater than the previous
+          navbar.style.top='-80px';
+          //set the value to the negetive of height of navbar 
+        }
+        
+        else{
+          navbar.style.top='0';
+        }
+        
+        lastScrollTop = scrollTop; //New Position Stored
+      });
+    }
+    navBar()
     
    function cursor(){
     // UPDATE: I was able to get this working again... Enjoy!
@@ -159,7 +229,7 @@ a.forEach(item => {
         
             gsap.fromTo(title, {
                 transformOrigin: '0% 50%',
-                rotate: 3
+               
             }, {
                 ease: 'none',
                 rotate: 0,
@@ -238,6 +308,78 @@ imageReveal()
 
 
 
-   })();
+function circleRotate(){
+  // Select the text you want to make it circular
+const text = document.querySelector(".circular-text .text")
+
+// Make the selected text circler with CircleType
+// you can find the full docs here: https://circletype.labwire.ca/
+const rotate = new CircleType(text).radius(65)
+
+// Add a scroll listener to the window object and rotate the selected text according to the scroll
+// we used * 0.15 to make the rotation looks smoother
+window.addEventListener("scroll", function(){
+  text.style.transform=`rotate(${window.scrollY * 0.15}deg)`
+})
+}
+
+circleRotate()
+
+
+
+/**
+* Scrolltrigger Scroll Letters Home
+*/
+function initScrollLetters() {
+  // Scrolling Letters Both Direction
+  // https://codepen.io/GreenSock/pen/rNjvgjo
+  // Fixed example with resizing
+  // https://codepen.io/GreenSock/pen/QWqoKBv?editors=0010
+
+  let direction = 1; // 1 = forward, -1 = backward scroll
+
+  const roll1 = roll(".big-name .name-wrap", {duration: 60}),
+        roll2 = roll(".rollingText02", {duration: 60}, true),
+        scroll = ScrollTrigger.create({
+          trigger: document.querySelector('[data-scroll-container]'),
+          onUpdate(self) {
+            if (self.direction !== direction) {
+              direction *= -1;
+              gsap.to([roll1, roll2], {timeScale: direction, overwrite: true});
+            }
+          }
+        });
+
+  // helper function that clones the targets, places them next to the original, then animates the xPercent in a loop to make it appear to roll across the screen in a seamless loop.
+  function roll(targets, vars, reverse) {
+    vars = vars || {};
+    vars.ease || (vars.ease = "none");
+    const tl = gsap.timeline({
+            repeat: -1,
+            onReverseComplete() { 
+              this.totalTime(this.rawTime() + this.duration() * 10); // otherwise when the playhead gets back to the beginning, it'd stop. So push the playhead forward 10 iterations (it could be any number)
+            }
+          }), 
+          elements = gsap.utils.toArray(targets),
+          clones = elements.map(el => {
+            let clone = el.cloneNode(true);
+            el.parentNode.appendChild(clone);
+            return clone;
+          }),
+          positionClones = () => elements.forEach((el, i) => gsap.set(clones[i], {position: "absolute", overwrite: false, top: el.offsetTop, left: el.offsetLeft + (reverse ? -el.offsetWidth : el.offsetWidth)}));
+    positionClones();
+    elements.forEach((el, i) => tl.to([el, clones[i]], {xPercent: reverse ? 100 : -100, ...vars}, 0));
+    window.addEventListener("resize", () => {
+      let time = tl.totalTime(); // record the current time
+      tl.totalTime(0); // rewind and clear out the timeline
+      positionClones(); // reposition
+      tl.totalTime(time); // jump back to the proper time
+    });
+    return tl;
+  }
+
+}
+initScrollLetters()
+
     
   

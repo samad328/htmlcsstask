@@ -19,18 +19,31 @@ header{
   max-width: 200px;
 }
 .navbar {
-  align-items: center;
-  background: $primary;
-//   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+ 
   display: flex;
   flex-direction: row;
- 
   font-family: sans-serif;
-  padding: 10px 50px;
+  padding: 10px;
+  width: 100%;
 
   h4{
     margin-bottom: 0;
   }
+}
+
+#navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  border-radius:0 0 30px 30px;
+  text-align:center;
+  z-index: 600;
+  /*Define a height for NavBar*/
+  height:80px;
+  transition: 0.5s;
+  /*and a transition time for a smooth appearence*/
+  
 }
 
 .push-left {
@@ -44,7 +57,7 @@ header{
   cursor: pointer;
   display: none;
   outline: none;
-  height: 30px;
+  height: 25px;
   position: relative;
   width: 30px;
   z-index: 1000;
